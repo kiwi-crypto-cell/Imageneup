@@ -3,11 +3,16 @@ const http = require('http'); // or 'https' if using ssl
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-// --- CONFIGURATION SETTINGS ---
-const BOT_TOKEN = process.env.BOT_TOKEN;       // Set this in your cloud settings
-const CHANNEL_ID = process.env.CHANNEL_ID;     // Set this in your cloud settings
+// --- CONFIGURATION SETTINGS (OPTIMIZED) ---
+const BOT_TOKEN = process.env.BOT_TOKEN;       
+const CHANNEL_ID = process.env.CHANNEL_ID;     
 const TARGET_URL = 'http://100.117.181.94:8887'; // Your PC's Tailscale IP
-const PING_INTERVAL = 360000; // 6 minutes (Safely respects Discord rate limits)
+
+// 1. Check your PC every 1 minute as requested!
+const PING_INTERVAL = 60000; 
+
+// 2. Increase timeout to 30 seconds so it waits out active image generations!
+const REQUEST_TIMEOUT = 30000; 
 
 let lastStatus = null; 
 
